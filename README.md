@@ -16,7 +16,7 @@ ___
 
 
 
-<a name="project-planning"></a><h1><img src="ppbar.png"/></h1>
+<a name="project-planning"></a><h1><img src="https://i.pinimg.com/originals/9f/b7/6d/9fb76d0350228675d02435d4f5aa1197.png"/></h1>
 ### Goal: 
 The goal for this project is to create a model that will accurately predict the likelihood of a pet getting adopted from Austin Animal Center.
 
@@ -61,29 +61,16 @@ I'd like to use takeaways from my exploration to cluster some features and use f
     
 [Jump to Navigation](#navigation)
 
-<a name="key-findings"></a><h1><img src="kfbar.png"/></h1>
+<a name="key-findings"></a><h1><img src="https://i.pinimg.com/originals/3a/1e/6d/3a1e6d338b1b0bd1850f2eb067f983b4.png"/></h1>
 
 ## Exploration Key Findings:
 
-- Ventura is a quarter of LA and OC is half of LA
-- Lot size is thrown off by outliers
-- home_value median price is $ 355_758
-- land_value has a similar distribution to home_value, but priced lesser
-- home_age is almost normally distributed.
 
-The following features appear to have clusters to explore:
-
-- home_age & home_value
-- home_age & sqft
-- lot_sqft & sqft
-- home_value & sqft
-- longitude & property_quality
-- home_age & property_quality
 
 
 [Jump to Navigation](#navigation)
 
-<a name="tested-hypotheses"></a><h1><img src="thbar.png"/></h1>
+<a name="tested-hypotheses"></a><h1><img src="https://i.pinimg.com/originals/35/3f/e6/353fe67133773dc3639f95987d57c386.png"/></h1>
 
 
 > Hypothesis₁
@@ -148,20 +135,14 @@ The following features appear to have clusters to explore:
     
 [Jump to Navigation](#navigation)
 
-<a name="take-aways"></a><h1><img src="tabar.png"/></h1>
+<a name="take-aways"></a><h1><img src="https://i.pinimg.com/originals/3f/d3/66/3fd3660db4a243c2e43640a28a44d4c2.png"/></h1>
 
-> - `home_age` and `logerror` had a weak linear relationship, at best
->
-> - `lot_sqft` did not have a significant effect on `logerror`, which we found surprising
->
-> - also surprising was the apparent lack of significance between `home_value` and `logerror`
 
-- Out of our homemade features, small homes of all ages , large homes, and homes that are considered "best quality" seem to be drivers of logerror.
 
 
 [Jump to Navigation](#navigation)
 
-<a name="data-dictionary"></a><h1><img src="ddbar.png"/></h1>
+<a name="data-dictionary"></a><h1><img src="https://i.pinimg.com/originals/20/cd/c6/20cdc645faf97028abf60bd59d713aac.png"/></h1>
 
 | column_name                 | description                                                                                                         | key             | dtype    |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|----------|
@@ -180,7 +161,7 @@ The following features appear to have clusters to explore:
 
 [Jump to Navigation](#navigation)
 
-<a name="repo-replication"></a><h1><img src="rrbar.png"/></h1>
+<a name="repo-replication"></a><h1><img src="https://i.pinimg.com/originals/70/fb/17/70fb17d0472644a6b5f71d652ed378be.png"/></h1>
 
     
 
