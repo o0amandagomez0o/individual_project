@@ -142,7 +142,7 @@ I'd like to use takeaways from my exploration to cluster some features and use f
 
 [Jump to Navigation](#navigation)
 
-<a name="data-dictionary"></a><h1><img src="https://i.pinimg.com/originals/9f/8a/03/9f8a0350a6fae8c06c18013b16d6274e.png"/></h1>
+<a name="data-dictionary"></a><h1><img src="https://i.pinimg.com/originals/3f/84/53/3f8453f4d3e1ff56d3934dd6ebe1d410.png"/></h1>
 
 | column_name                 | description                                                                                                         | key             | dtype    |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|----------|
