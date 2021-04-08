@@ -142,7 +142,7 @@ I'd like to use takeaways from my exploration to cluster some features and use f
 
 [Jump to Navigation](#navigation)
 
-<a name="data-dictionary"></a><h1><img src="https://i.pinimg.com/originals/20/cd/c6/20cdc645faf97028abf60bd59d713aac.png"/></h1>
+<a name="data-dictionary"></a><h1><img src="https://i.pinimg.com/originals/9f/8a/03/9f8a0350a6fae8c06c18013b16d6274e.png"/></h1>
 
 | column_name                 | description                                                                                                         | key             | dtype    |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|----------|
@@ -161,7 +161,7 @@ I'd like to use takeaways from my exploration to cluster some features and use f
 
 [Jump to Navigation](#navigation)
 
-<a name="repo-replication"></a><h1><img src="https://i.pinimg.com/originals/70/fb/17/70fb17d0472644a6b5f71d652ed378be.png"/></h1>
+<a name="repo-replication"></a><h1><img src="https://i.pinimg.com/originals/d5/24/a6/d524a6bb62a9d6734c7cf899a11c7310.png"/></h1>
 
     
 
