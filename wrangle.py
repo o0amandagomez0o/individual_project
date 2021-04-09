@@ -4,33 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import warnings
 import seaborn as sns
+from sklearn.model_selection import train_test_split
 from scipy import stats
-
-#functions
-#import wrangle as wr
-#import explore as exp
-#import model as mo
-
 
 warnings.filterwarnings("ignore")
 
-#evaluate
-from sklearn.metrics import mean_squared_error, r2_score, explained_variance_score
-from sklearn.feature_selection import f_regression 
-from statsmodels.formula.api import ols
-import sklearn.preprocessing
-
-#feature engineering
-from sklearn.feature_selection import SelectKBest, f_regression
-from sklearn.linear_model import LinearRegression
-from sklearn.feature_selection import RFE
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
-
-# modeling methods
-from sklearn.metrics import mean_squared_error
-from sklearn.linear_model import LinearRegression, LassoLars, TweedieRegressor
-from sklearn.preprocessing import PolynomialFeatures
 
 '''
 *------------------*
@@ -78,8 +56,7 @@ def clean_aac(df):
                        "Breed": "breed", "Color": "color", "Date of Birth": "dob", "Outcome Type": "outcome_type", 
                        "Outcome Subtype": "outcome_subtype", "Sex upon Outcome": "outcome_sex", "Age upon Outcome": "outcome_age"})
 
-    
-    # remove time from `datetime` col  and convert dtype to date
+        # remove time from `datetime` col  and convert dtype to date
     df['date'] = pd.to_datetime(df['date']).dt.date
     
     dropcols = ['name', 'monthyear', 'found_loc', 'intake_type', 'intake_cond', 'intake_sex', 'intake_age', 'outcome_subtype']
@@ -121,9 +98,13 @@ def clean_aac(df):
     df['neutered_male'] = np.where(df.outcome_sex ==  "Neutered Male", 1, 0 )
     df['intact_male'] = np.where(df.outcome_sex ==  "Intact Male", 1, 0 )
     df['neutered'] = np.where((df.outcome_sex ==  "Neutered Male") | (df.outcome_sex ==  "Spayed Female"), 1, 0 )
+    df['is_male'] = np.where((df.outcome_sex ==  "Neutered Male") | (df.outcome_sex ==  "Intact Male"), 1, 0 )
     
     # encode animal_type
     dummy_df = pd.get_dummies(df.animal_type, prefix="is", drop_first=True)
+    # append dummy column
+    df = pd.concat([df, dummy_df], axis =1)
+  
     
     # new columns
     df['is_pitbull'] = np.where(df['breed'].str.contains('Pit|American Staffordshire|Staffordshire'), 1, 0)
@@ -138,7 +119,7 @@ def clean_aac(df):
     df = df.sort_values('date').drop_duplicates('animal_id', keep='last')
     
     # drop encoded/unncessary columns
-    cols = ['animal_type', 'outcome_type', 'outcome_sex', 'outcome_age']
+    cols = ['animal_type', 'outcome_type', 'outcome_sex']
     df = df.drop(columns= cols)
     
     
@@ -148,3 +129,63 @@ def clean_aac(df):
 
 
 
+def split_df(df, target, seed):
+    '''
+    split_df will take one argument(df) and 
+    then split our data into 20/80, 
+    then split the 80% into 30/70
+    
+    performs a train, validate, test split
+    
+    splits each of the 3 samples into a dataframe with independent variables
+    and a series with the dependent, or target variable. 
+    
+    The function returns 6 dataframes and 3 series:
+    train, validate, test split, X_train (df) & y_train (series), X_validate & y_validate, X_test & y_test. 
+    '''
+    # Train, Validate, and test
+    train_and_validate, test = train_test_split(df, test_size=0.2, random_state=seed)
+    train, validate = train_test_split(train_and_validate, test_size=0.3, random_state=seed)
+    
+    # Split with X and y
+    X_train = train.drop(columns=[target])
+    y_train = train[target]
+    
+    X_validate = validate.drop(columns=[target])
+    y_validate = validate[target]
+    
+    X_test = test.drop(columns=[target])
+    y_test = test[target]
+    
+    return train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test 
+
+
+
+
+
+def get_object_cols(df):
+    '''
+    This function takes in a dataframe and identifies the columns that are object types
+    and returns a list of those column names. 
+    '''
+    # create a mask of columns whether they are object type or not
+    mask = np.array((df.dtypes == "object") | (df.dtypes == "category"))
+
+        
+    # get a list of the column names that are objects (from the mask)
+    object_cols = df.iloc[:, mask].columns.tolist()
+    
+    return object_cols
+
+
+
+
+
+def get_numeric_X_cols(train, object_cols):
+    '''
+    takes in a dataframe and list of object column names
+    and returns a list of all other columns names, the non-objects. 
+    '''
+    numeric_cols = [col for col in train.columns.values if col not in object_cols]
+    
+    return numeric_cols   
