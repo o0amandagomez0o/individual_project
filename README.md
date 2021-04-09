@@ -45,6 +45,7 @@ I'd like my first iteration to include as many encoded features as possible for 
 **Second iteration:**
 I'd like to use takeaways from my exploration to cluster some features and use feature importance to remove features that aren't helping my model. 
 - Cluster: 
+    - age & breed
 - New features:
     - age range/bin
     - encode animal type
