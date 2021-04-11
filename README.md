@@ -207,7 +207,7 @@ In order to get started reproducing this project, you'll need to setup a proper 
     ![prep your repo](https://i.pinimg.com/originals/d0/32/f0/d032f04aaafa14bcb65c675cc7ae828f.png)
 > <code>git clone </code> (Cmd+V)
     
-    <br>
+
 4. Create a `.gitignore` that includes any files you dont want shared on the internet and push it! 
     
     - (This can include your newly downloaded .csv files)
