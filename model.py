@@ -16,7 +16,7 @@ from sklearn.metrics import precision_recall_fscore_support
 
 
 def get_metrics(mod, X, y):
-    baseline_accuracy = (train.adopted == 0).mean()
+    baseline_accuracy = (train.adopted == 1).mean()
     y_pred = mod.predict(X)
     accuracy = mod.score(X, y)
     conf = confusion_matrix(y, y_pred)
