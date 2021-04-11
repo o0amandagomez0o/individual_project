@@ -3,6 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
+from sklearn.cluster import KMeans
+from sklearn.feature_selection import SelectKBest, f_regression, chi2
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_selection import RFE
 from scipy import stats
 
 '''
@@ -213,57 +217,57 @@ def plot_swarm_grid_with_color(train, target, cat_vars, quant_vars):
 
 
 
-def correlation_test(nullh, alth, x, y):
+def select_kbest(X, y, n):
     '''
-    correlation_test will take in two arguments and 
-    - plot a scatterplot of them
-    - test the correlation
-    return: the correlation coefficient, p, and if there is a linear relationship.
-    '''
-    
-    splot = plt.scatter(x, y)
-    
-    null_hypothesis = nullh
-    alternative_hypothesis = alth
-    
-    confidence_level = .95
-    a = 1 - confidence_level 
-    
-    corr, p = stats.pearsonr(x, y)
-
-    if p < a:
-        print(f"Reject null statment: {null_hypothesis}")
-        print("There is a linear relationship.")
-        if 0 < corr < .6:
-            print("Although, it is a positive weak one.")
-        elif .6 < corr < 1:
-            print("That is a stronger positive correlation.")
-        elif -.6 < corr < 0:
-            print("Although, it is a negative weak one.")
-        elif -1 < corr < -.6:
-            print("That is a stronger negative correlation.")
-        
-    else : 
-        print("Fail to reject the null hypothesis.")
-        
-    print(f"""
-    Correlation Coefficient: {corr}
-    p: {p}
-    
-    """)
-    return splot
-
-
-
-
-
-def jointplot(x, y, df):
-    '''
-    jointplot will take in a feature("x") and a target("y") 
-    and plot a corresponding scatter and distribution.
+    select_kbest takes in the 
+    predictors (X), 
+    the target (y), and 
+    the number of features to select (k) and 
+    returns the names of the top k selected features based on the SelectKBest class
     '''
     
-    p = sns.jointplot(x=x, y=y, data=df, kind="hex", color="mediumslateblue")
+    # parameters: f_regression stats test
+    f_selector = SelectKBest(chi2, k= n)
     
-    return p
+    # find the top 2 X-feats correlated with y
+    f_selector.fit(X, y)
+    
+    # boolean mask of whether the column was selected or not. 
+    feature_mask = f_selector.get_support()
+    
+    # get list of top K features. 
+    f_feature = X.iloc[:,feature_mask].columns.tolist()
+    
+    return f_feature
+
+
+
+
+
+def rfe(X, y, n):
+    '''
+    rfe takes in the 
+    predictors (X), 
+    the target (y), and 
+    the number of features to select (k) and 
+    returns the names of the top k selected features based on the SelectKBest class
+    '''
+    
+    # initialize the ML algorithm
+    lm = LogisticRegression()
+    
+    # create the rfe object, indicating the ML object (lm) and the number of features I want to end up with. 
+    rfe = RFE(lm, n)
+    
+    # fit the data using RFE
+    rfe.fit(X,y)  
+    
+    # get the mask of the columns selected
+    feature_mask = rfe.support_
+    
+    # get list of the column names. 
+    rfe_feature = X.iloc[:,feature_mask].columns.tolist()
+    
+    return rfe_feature
+
  

@@ -122,6 +122,14 @@ def clean_aac(df):
     cols = ['animal_type', 'outcome_type', 'outcome_sex']
     df = df.drop(columns= cols)
     
+    # List of cols to convert to 'int'
+    colms = ['date', 'breed', 'color', 
+            'dob']
+    # loop through cols list in conversion
+    for colm in colms:
+        df[colm] = df[colm].astype('str')
+    
+    df = df.set_index("animal_id")
     
     return df
 
