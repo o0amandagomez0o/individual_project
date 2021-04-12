@@ -4,7 +4,7 @@ ___
 
 <a id='navigation'></a>
 
-
+[[Project Summary](#project-summary)]
 [[Project Planning](#project-planning)]
 [[Key Findings](#key-findings)]
 [[Tested Hypotheses](#tested-hypotheses)]
@@ -13,7 +13,9 @@ ___
 [[Repo Replication](#repo-replication)]
 
 ___
+<a name="project-summary"></a><h1><img src="https://i.pinimg.com/originals/0e/10/14/0e1014ec7b1a284b4cdd31269a407622.png"/></h1>
 
+I looked into the possible drivers of adoptability using Austin Animal Center's data accumulated from the past seven years. With a detailed eye, I prepped and explored my data in Jupyter Lab using Pandas, Seaborn and Mathplotlib. I then used Scikit-learn to create a logistic regression model used to predict the adoptability of a pet.
 
 
 <a name="project-planning"></a><h1><img src="https://i.pinimg.com/originals/9f/b7/6d/9fb76d0350228675d02435d4f5aa1197.png"/></h1>
@@ -154,6 +156,7 @@ I'd like to use takeaways from my exploration to cluster some features and use f
 
 - More features *may* not drive model accuracy as much as anticipated.
 - Logistic Regression is again a good model for predicting classification.
+- Neutered status is the most important driver for adoption.
 
 
 
@@ -185,9 +188,97 @@ I'd like to use takeaways from my exploration to cluster some features and use f
 <details>
   <summary>Click to see full list. </summary>
 
-| column_name                 | description                                                                                                         | key             | dtype    |
-|-----------------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|----------| 
-| `young_smhome`              | Indicates if the property is a young small square footage home.                                                     | 1 = yes, 0 = no | uint8    |
+| column_name                      | description                        | key              | dtype |
+|----------------------------------|------------------------------------|------------------|-------|
+| `American Pit Bull Terrier Mix` | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `American Shorthair Mix`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Anatol Shepherd Mix`           | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Australian Cattle Dog`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Australian Cattle Dog Mix`     | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Australian Kelpie`             | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Australian Shepherd`           | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Australian Shepherd Mix`       | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Australian Terrier Mix`        | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Basenji Mix`                   | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Beagle`                        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Black Mouth Cur Mix`           | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Blue Lacy Mix`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Border Collie`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Border Collie Mix`             | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Border Terrier Mix`            | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Boxer`                         | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Boxer Mix`                     | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Cairn Terrier Mix`             | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Cardigan Welsh Corgi`          | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Catahoula`                     | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Catahoula Mix`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Chihuahua Longhair Mix`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Chihuahua Shorthair`           | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Chihuahua Shorthair Mix`       | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Chow Chow Mix`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Cocker Spaniel`                | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Dachshund`                     | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Dachshund Mix`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Domestic Medium Hair Mix`      | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Domestic Shorthair`            | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Domestic Shorthair Mix`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `English Coonhound Mix`         | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `German Shepherd`               | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `German Shepherd Mix`           | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Harrier Mix`                   | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Jack Russell Terrier`          | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Jack Russell Terrier Mix`      | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Labrador Retriever`            | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Labrador Retriever Mix`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Lhasa Apso`                    | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Lhasa Apso Mix`                | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Manchester Terrier Mix`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Miniature Pinscher`            | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Miniature Pinscher Mix`        | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Miniature Schnauzer Mix`       | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Norfolk Terrier Mix`           | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Pekingese`                     | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Pekingese Mix`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Pembroke Welsh Corgi`          | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Pharaoh Hound Mix`             | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Plott Hound`                   | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Pointer`                       | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Pug Mix`                       | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Rat Terrier`                   | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Redbone Hound Mix`             | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Rhod Ridgeback`                | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Shih Tzu`                      | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Shih Tzu Mix`                  | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Siberian Husky`                | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Siberian Husky Mix`            | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Smooth Fox Terrier Mix`        | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Spanish Water Dog`             | Indicates if animal is this breed. | 1 = dog, 0 = cat | int64 |
+| `Staffordshire Mix`             | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Tan Hound Mix`                 | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Tibetan Spaniel Mix`           | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Vizsla Mix`                    | Indicates if animal is this breed. | 1 = yes, 0 = no  | int64 |
+| `Black`                         | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Black Tabby`                   | Indicates if animal is this color. | 1 = dog, 0 = cat | int64 |
+| `Blue`                          | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Blue Merle`                    | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Blue Tick`                     | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Brown`                         | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Brown Brindle`                 | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Brown Merle`                   | Indicates if animal is this color. | 1 = dog, 0 = cat | int64 |
+| `Brown Tabby`                   | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Chocolate`                     | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Gray`                          | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Gray Tabby`                    | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Orange`                        | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Orange Tabby`                  | Indicates if animal is this color. | 1 = dog, 0 = cat | int64 |
+| `Red`                           | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Red Merle`                     | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Sable`                         | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Tan`                           | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Tortie`                        | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Tricolor`                      | Indicates if animal is this color. | 1 = dog, 0 = cat | int64 |
+| `White`                         | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
+| `Yellow`                         | Indicates if animal is this color. | 1 = yes, 0 = no  | int64 |
 
         
 </details>
