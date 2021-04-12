@@ -16,6 +16,12 @@ from sklearn.metrics import precision_recall_fscore_support
 
 
 def get_metrics(mod, X, y):
+    """
+    get_metrics returns the baseline accuracy score 
+    along with the current model's accuracy score for comparison 
+    along with a table of precision/recall/f1-score/support percentages of the model
+    """
+    base
     baseline_accuracy = (train.adopted == 1).mean()
     y_pred = mod.predict(X)
     accuracy = mod.score(X, y)

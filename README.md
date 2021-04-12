@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="https://i.pinimg.com/originals/8b/c8/bf/8bc8bfa43de39e5a7c1371702d53bd2a.png"/></div>
+![aacbanner](https://i.pinimg.com/originals/8b/c8/bf/8bc8bfa43de39e5a7c1371702d53bd2a.png)
 
 ___
 
@@ -18,7 +18,7 @@ ___
 
 <a name="project-planning"></a><h1><img src="https://i.pinimg.com/originals/9f/b7/6d/9fb76d0350228675d02435d4f5aa1197.png"/></h1>
 ### Goal: 
-The goal for this project is to create a model that will accurately predict the likelihood of a pet getting adopted from Austin Animal Center.
+The goal for this project is to create a model that will accurately predict if a pet will be adopted from Austin Animal Center and what features drive the prediction accuracy.
 
 ### Initial Hypotheses:
 
@@ -152,6 +152,8 @@ I'd like to use takeaways from my exploration to cluster some features and use f
 
 <a name="take-aways"></a><h1><img src="https://i.pinimg.com/originals/3f/d3/66/3fd3660db4a243c2e43640a28a44d4c2.png"/></h1>
 
+- More features *may* not drive model accuracy as much as anticipated.
+- Logistic Regression is again a good model for predicting classification.
 
 
 
@@ -208,7 +210,7 @@ In order to get started reproducing this project, you'll need to setup a proper 
 > <code>git clone </code> (Cmd+V)
     
 
-4. Create a `.gitignore` that includes any files you dont want shared on the internet and push it! 
+4. Create a `.gitignore` that includes any files you dont want shared on the internet and **push it**! 
     
     - (This can include your newly downloaded .csv files)
 > <code>code .gitignore</code>
